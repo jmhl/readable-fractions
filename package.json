@@ -1,6 +1,6 @@
 {
   "name": "readable-fractions",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Converts decimals to human readable fractions, and fractions to decimals.",
   "main": "lib/index.js",
   "repository": {
