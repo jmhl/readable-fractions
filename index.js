@@ -69,11 +69,4 @@ function toReadableFraction(decimal) {
   return `${numerator}/${denominator}`;
 }
 
-// console.log(toReadableFraction(0.33333));
-// console.log(toReadableFraction(0.125));
-console.log(toReadableFraction(0.66));
-// console.log(toReadableFraction(0.67));
-// console.log(toReadableFraction(0.99));
-// console.log(toReadableFraction(0.334));
-// console.log(toReadableFraction(1.334));
-// console.log(toReadableFraction(0.1875));
+export default toReadableFraction;
