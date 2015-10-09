@@ -1,10 +1,18 @@
+// A JavaScript implementation of:
+// http://www.ics.uci.edu/~eppstein/numth/frap.c
+// Via:
+// http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions
+// Ruby gem implemenation:
+// https://github.com/clord/fraction
+// More info:
+// https://en.wikipedia.org/wiki/Continued_fraction
 
 /**
  * Converts a decimal to a human readable fraction with a maximum
- * denominator of 10.
+ * denominator of 10. This means that the result is NOT precise.
  *
  * @param {Number} decimal - The decimal number to convert.
- * @param {Number} shouldFormat (optional) - If true then the function will
+ * @param {Boolean} shouldFormat (optional) - If true then the function will
  *   return a string instead of the fraction object.
  * @returns {Object|String} A fraction object with keys:
  *     - denominator
@@ -20,7 +28,7 @@ function toReadableFraction(decimal, shouldFormat=false) {
   // The decimal to convert.
   let startx = decimal;
   // The maximum denominator.
-  let maxden = 10;
+  let maxDenominator = 10;
   let sign = 1;
 
   // Only work with positive numbers.
@@ -42,7 +50,7 @@ function toReadableFraction(decimal, shouldFormat=false) {
   let ai;
   let count = 0;
 
-  while (matrix[1][0] * (ai = Math.floor(x)) + matrix[1][1] <= maxden) {
+  while (matrix[1][0] * (ai = Math.floor(x)) + matrix[1][1] <= maxDenominator) {
     // Don't let it loop too long.
     if (count += 1 > 50) {
       break;
@@ -81,31 +89,51 @@ function toReadableFraction(decimal, shouldFormat=false) {
   return fractionObject;
 }
 
+/**
+ * Converts a fraction to a decimal. Unlike toReadableFraction,
+ * this is precise.
+ *
+ * @param {Object} fraction - The fraction object to convert to a string.
+ *   It's recommended to use the result of toReadableFraction, but any
+ *   array with the format of [numerator, denominator] is allowed.
+ * @param {Boolean} isImproper (optional) - If true, will return an improper
+ *   fraction if the fraction object has a numerator greater than its
+ *   denominator.
+ * @returns {String} The string.
+ */
 function formatReadableFraction(fractionObject, isImproper=false) {
   let { denominator, error, numerator } = fractionObject;
 
-  if (isImproper) {
+  if (isImproper || numerator < denominator) {
     return `${numerator}/${denominator}`;
   }
 
-  let wholeNumber;
-  if (numerator > denominator) {
-    wholeNumber = Math.floor(numerator / denominator);
-  }
+  let wholeNumber = Math.floor(numerator / denominator);
   let remainder = numerator % denominator;
 
-  return `${wholeNumber ? wholeNumber + ' ': ''}${remainder}/${denominator}`;
+  return `${wholeNumber} ${remainder}/${denominator}`;
 }
 
+/**
+ * Converts a fraction to a decimal. Unlike toReadableFraction,
+ * this is precise.
+ *
+ * @param {String} fraction - The fraction (as a string) to convert.
+ * @returns {Number} The converted fraction in decimal notation.
+ */
 function fractionToDecimal(fraction) {
-  let splitFraction = fraction.split(' ');
-  let wholeNumber;
-  let numerator;
-  let denominator;
+  let eachChar = fraction.split(/(\D|^\/)/);
 
-  splitFraction.forEach(ch => {
+  if (eachChar.length === 3) {
+    let [numerator, slash, denominator] = eachChar;
 
-  });
+    return +numerator / +denominator;
+  } else {
+    let [wholeNumber, _, numerator, slash, denominator] = eachChar;
+
+    let decimal = +numerator / +denominator;
+    return +wholeNumber + decimal;
+  }
 }
 
 export {

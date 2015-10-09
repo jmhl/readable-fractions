@@ -15,6 +15,14 @@ const DECIMALS_AND_FRACTIONS = [
   { decimal: 2.1875, fraction: '2 1/5' },
 ];
 
+const FRACTIONS_AND_DECIMALS = [
+  { decimal: 0.125, fraction: '1/8' },
+  { decimal: 0.3333333333333333, fraction: '1/3' },
+  { decimal: 0.6666666666666666, fraction: '2/3' },
+  { decimal: 0.2, fraction: '1/5' },
+  { decimal: 2.2, fraction: '2 1/5' },
+];
+
 describe('formatReadableFraction', () => {
   it('should correctly format a fraction', () => {
     let decimal = 0.33;
@@ -54,6 +62,16 @@ describe('toReadableFraction', () => {
 
     it(`should correctly convert ${decimal} to a fraction`, () => {
       expect(toReadableFraction(decimal, true)).to.equal(fraction);
+    });
+  });
+});
+
+describe('fractionToDecimal', () => {
+  FRACTIONS_AND_DECIMALS.forEach(obj => {
+    let { decimal, fraction } = obj;
+
+    it(`should correctly convert ${fraction} to a decimal`, () => {
+      expect(fractionToDecimal(fraction)).to.equal(decimal);
     });
   });
 });
