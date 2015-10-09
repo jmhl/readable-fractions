@@ -13,9 +13,10 @@
 export default function formatReadableFraction(fractionObject, isImproper=false) {
   let { denominator, error, numerator } = fractionObject;
 
-  // When the numerator is 0, return nothing instead of '0/denominator'.
+  // When the numerator is 0, return an empty string instead of
+  // '0/denominator'.
   if (numerator === 0) {
-    return;
+    return '';
   }
 
   // If the fraction is improper or the numerator is less than the denominator
@@ -28,6 +29,8 @@ export default function formatReadableFraction(fractionObject, isImproper=false)
   let wholeNumber = Math.floor(numerator / denominator);
   // Grab the remainder which will be the numerator in the remainder fraction.
   let remainder = numerator % denominator;
+  // Same concept as above, don't show the remainder if the numerator is 0.
+  let isRemainderShown = remainder !== 0;
 
-  return `${wholeNumber} ${remainder}/${denominator}`;
+  return `${wholeNumber}${isRemainderShown ? ` ${remainder}/${denominator}` : ''}`;
 }

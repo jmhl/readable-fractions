@@ -13,6 +13,8 @@ const DECIMALS_AND_FRACTIONS = [
   { decimal: 0.67, fraction: '2/3' },
   { decimal: 0.1875, fraction: '1/5' },
   { decimal: 2.1875, fraction: '2 1/5' },
+  { decimal: 0.01875, fraction: '' },
+  { decimal: 3.01875, fraction: '3' },
 ];
 
 const FRACTIONS_AND_DECIMALS = [
