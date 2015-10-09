@@ -11,10 +11,20 @@
  * Converts a decimal to a human readable fraction with a maximum
  * denominator of 10.
  *
- * @param {Number} num - The decimal number to convert.
- * @returns {String} The decimal represented as a fraction.
+ * @param {Number} decimal - The decimal number to convert.
+ * @param {Number} shouldFormat (optional) - If true then the function will
+ *   return a string instead of the fraction object.
+ * @returns {Object|String} A fraction object with keys:
+ *     - denominator
+ *     - error
+ *     - numerator
+ *   OR
+ *   a formatted fraction string (This will always return a result with a
+ *   proper fraction so if the decimal is greater than 1 then the result
+ *   will never be improper (e.g. 12/5). To retrieve an improper fraction,
+ *   call formatReadableFraction on the result of toReadableFraction.
  */
-function toReadableFraction(decimal) {
+function toReadableFraction(decimal, shouldFormat=false) {
   // The decimal to convert.
   let startx = decimal;
   // The maximum denominator.
@@ -66,7 +76,41 @@ function toReadableFraction(decimal) {
   let denominator = matrix[1][0];
   let error = startx - (matrix[0][0] / matrix[1][0]);
 
-  return `${numerator}/${denominator}`;
+  let fractionObject = {
+    denominator,
+    error,
+    numerator,
+  };
+
+  if (shouldFormat) {
+    return formatReadableFraction(fractionObject);
+  }
+
+  return fractionObject;
 }
 
-export default toReadableFraction;
+function formatReadableFraction(fractionObject, isImproper=false) {
+  let { denominator, error, numerator } = fractionObject;
+
+  if (isImproper) {
+    return `${numerator}/${denominator}`;
+  }
+
+  let wholeNumber;
+  if (numerator > denominator) {
+    wholeNumber = Math.floor(numerator / denominator);
+  }
+  let remainder = numerator % denominator;
+
+  return `${wholeNumber ? wholeNumber + ' ': ''}${remainder}/${denominator}`;
+}
+
+function fractionToDecimal(fraction) {
+
+}
+
+export {
+  formatReadableFraction,
+  fractionToDecimal,
+  toReadableFraction,
+};
