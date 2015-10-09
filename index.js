@@ -1,22 +1,50 @@
-function decimalToFraction(num) {
-  // The decimal to convert
-  let startx = num;
-  // The maximum denominator
-  let maxden = 10;
+// JavaScript implementation of:
+// http://www.ics.uci.edu/~eppstein/numth/frap.c
+// Ruby gem implemenation:
+// https://github.com/clord/fraction
+// Via:
+// http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions
+// More info:
+// https://en.wikipedia.org/wiki/Continued_fraction
 
-  // Create a matrix
+/**
+ * Converts a decimal to a human readable fraction with a maximum
+ * denominator of 10.
+ *
+ * @param {Number} num - The decimal number to convert.
+ * @returns {String} The decimal represented as a fraction.
+ */
+function toReadableFraction(decimal) {
+  // The decimal to convert.
+  let startx = decimal;
+  // The maximum denominator.
+  let maxden = 10;
+  let sign = 1;
+
+  // Only work with positive numbers.
+  if (decimal < 0) {
+    sign = -1;
+    decimal *= -1;
+  }
+
+  // Create a matrix.
+  // The numerator and denominator of the final fraction will be the
+  // first column of the matrix (m[0][0] and m[1][0]).
   let matrix = [
     [1, 0],
     [0, 1]
   ];
 
-  let x = num;
+  let x = decimal;
+  let term;
   let ai;
   let count = 0;
 
-  while (matrix[1][0] * (ai = Math.round(x)) + matrix[1][1] <= maxden) {
-    count++;
-    if (count > 50) break;
+  while (matrix[1][0] * (ai = Math.floor(x)) + matrix[1][1] <= maxden) {
+    // Don't let it loop too long.
+    if (count += 1 > 50) {
+      break;
+    }
 
     let term = matrix[0][0] * ai + matrix[0][1];
     matrix[0][1] = matrix[0][0];
@@ -25,66 +53,27 @@ function decimalToFraction(num) {
     matrix[1][1] = matrix[1][0];
     matrix[1][0] = term;
 
-    // Don't divide by zero
-    if (startx === ai) break;
+    // Don't divide by zero.
+    if (x === ai) {
+      break;
+    }
     x = 1 / Math.abs(x - ai);
   }
 
   let numerator = matrix[0][0];
+  // If the decimal argument was negative, make sure we return a negative fraction.
+  numerator *= sign;
   let denominator = matrix[1][0];
   let error = startx - (matrix[0][0] / matrix[1][0]);
-  console.log(numerator, denominator, error);
 
   return `${numerator}/${denominator}`;
 }
 
-// console.log(decimalToFraction(0.33333));
-// console.log(decimalToFraction(0.125));
-console.log(decimalToFraction(0.66));
-// console.log(decimalToFraction(0.1875));
-
-// #include <stdio.h>
-//
-// main(ac, av)
-//   int ac;
-//   char ** av;
-// {
-//   long m[2][2];
-//   double x, startx;
-//   long maxden;
-//   long ai;
-//
-//   startx = x = atof(av[1]);
-//   maxden = atoi(av[2]);
-//
-//   /* initialize matrix */
-//   m[0][0] = m[1][1] = 1;
-//   m[0][1] = m[1][0] = 0;
-//
-//   /* loop finding terms until denom gets too big */
-//   while (m[1][0] *  ( ai = (long)x ) + m[1][1] <= maxden) {
-//     long t;
-//     t = m[0][0] * ai + m[0][1];
-//     m[0][1] = m[0][0];
-//     m[0][0] = t;
-//     t = m[1][0] * ai + m[1][1];
-//     m[1][1] = m[1][0];
-//     m[1][0] = t;
-//     if(x==(double)ai) break;     // AF: division by zero
-//     x = 1/(x - (double) ai);
-//     if(x>(double)0x7FFFFFFF) break;  // AF: representation failure
-//   }
-//
-//   /* now remaining x is between 0 and 1/ai */
-//   /* approx as either 0 or 1/m where m is max that will fit in maxden */
-//   /* first try zero */
-//   printf("%ld/%ld, error = %e\n", m[0][0], m[1][0],
-//       startx - ((double) m[0][0] / (double) m[1][0]));
-//
-//   /* now try other possibility */
-//   ai = (maxden - m[1][1]) / m[1][0];
-//   m[0][0] = m[0][0] * ai + m[0][1];
-//   m[1][0] = m[1][0] * ai + m[1][1];
-//   printf("%ld/%ld, error = %e\n", m[0][0], m[1][0],
-//       startx - ((double) m[0][0] / (double) m[1][0]));
-// }
+// console.log(toReadableFraction(0.33333));
+// console.log(toReadableFraction(0.125));
+console.log(toReadableFraction(0.66));
+// console.log(toReadableFraction(0.67));
+// console.log(toReadableFraction(0.99));
+// console.log(toReadableFraction(0.334));
+// console.log(toReadableFraction(1.334));
+// console.log(toReadableFraction(0.1875));

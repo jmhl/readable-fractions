@@ -1,9 +1,23 @@
 import chai from 'chai';
-import decimalToFraction from './index.js';
+import toReadableFraction from './index.js';
 let { expect } = chai;
 
 describe('decimalToFraction', () => {
   it('should convert decimals to fractions', () => {
-    expect(decimalToFraction(0.333333)).to.equal('1/3');
+    let decimalsAndFractions = [
+      { decimal: 0.333333, fraction: '1/3' },
+      { decimal: 0.125, fraction: '1/3' },
+      { decimal: 0.333333, fraction: '1/3' },
+      { decimal: 0.333333, fraction: '1/3' },
+      { decimal: 0.333333, fraction: '1/3' },
+      { decimal: 0.333333, fraction: '1/3' },
+    ];
+
+
+    decimalsAndFractions.forEach(obj => {
+      let { decimal, fraction } = obj;
+
+      expect(toReadableFraction(decimal)).to.equal(fraction);
+    });
   });
 });
