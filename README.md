@@ -99,5 +99,8 @@ let result = toReadableFraction(decimal, true);
 console.log(result); // '1/8'
 ```
 
+### Contributing
+Add the git post-commit hook
+
 ## License
 MIT
