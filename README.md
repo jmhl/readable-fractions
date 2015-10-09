@@ -1,4 +1,5 @@
 # Human Readable Fractions
+A small library to convert decimals to human readable fractions. Since the fractions are human readable, it means that they are *not* precise. The maximum denominator (right now) is 10. Also contains a function to convert fractions to decimals.
 
 ## Info
 + A JavaScript implementation of: [http://www.ics.uci.edu/~eppstein/numth/frap.c]()
