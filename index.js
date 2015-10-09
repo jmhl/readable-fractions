@@ -1,11 +1,3 @@
-// JavaScript implementation of:
-// http://www.ics.uci.edu/~eppstein/numth/frap.c
-// Ruby gem implemenation:
-// https://github.com/clord/fraction
-// Via:
-// http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions
-// More info:
-// https://en.wikipedia.org/wiki/Continued_fraction
 
 /**
  * Converts a decimal to a human readable fraction with a maximum
@@ -106,7 +98,14 @@ function formatReadableFraction(fractionObject, isImproper=false) {
 }
 
 function fractionToDecimal(fraction) {
+  let splitFraction = fraction.split(' ');
+  let wholeNumber;
+  let numerator;
+  let denominator;
 
+  splitFraction.forEach(ch => {
+
+  });
 }
 
 export {

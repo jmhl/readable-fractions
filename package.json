@@ -1,12 +1,12 @@
 {
-  "name": "hrf",
-  "version": "1.0.0",
+  "name": "HumanReadableFractions",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
-  "author": "",
+  "author": "James Haley",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.3.0",
