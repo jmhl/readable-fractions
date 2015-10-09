@@ -97,3 +97,6 @@ let decimal = 0.125;
 let result = toReadableFraction(decimal, true);
 console.log(result); // '1/8'
 ```
+
+## License
+MIT
