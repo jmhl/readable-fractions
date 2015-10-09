@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Converts decimals to human readable fractions, and fractions to decimals.",
   "main": "bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jmhl/readable-fractions"
+  },
   "scripts": {
     "test": "mocha"
   },
