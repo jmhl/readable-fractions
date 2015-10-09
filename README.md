@@ -2,10 +2,10 @@
 A small library to convert decimals to human readable fractions. Since the fractions are human readable, it means that they are *not* precise. The maximum denominator (right now) is 10. Also contains a function to convert fractions to decimals.
 
 ## Info
-+ A JavaScript implementation of: [http://www.ics.uci.edu/~eppstein/numth/frap.c]()
-+ Via: [http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions]()
-+ Ruby gem implemenation: [https://github.com/clord/fraction]()
-+ More info: [https://en.wikipedia.org/wiki/Continued_fraction]()
++ A JavaScript implementation of: [http://www.ics.uci.edu/~eppstein/numth/frap.c](http://www.ics.uci.edu/~eppstein/numth/frap.c)
++ Via: [http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions](http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions)
++ Ruby gem implemenation: [https://github.com/clord/fraction](https://github.com/clord/fraction)
++ More info: [https://en.wikipedia.org/wiki/Continued_fraction](https://en.wikipedia.org/wiki/Continued_fraction)
 
 ## API
 + [formatReadableFractionlink](#f1)
