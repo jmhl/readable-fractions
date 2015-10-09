@@ -90,8 +90,7 @@ function toReadableFraction(decimal, shouldFormat=false) {
 }
 
 /**
- * Converts a fraction to a decimal. Unlike toReadableFraction,
- * this is precise.
+ * Formats the readable fraction object as a string.
  *
  * @param {Object} fraction - The fraction object to convert to a string.
  *   It's recommended to use the result of toReadableFraction, but any
@@ -99,7 +98,7 @@ function toReadableFraction(decimal, shouldFormat=false) {
  * @param {Boolean} isImproper (optional) - If true, will return an improper
  *   fraction if the fraction object has a numerator greater than its
  *   denominator.
- * @returns {String} The string.
+ * @returns {String} The fraction object in string format.
  */
 function formatReadableFraction(fractionObject, isImproper=false) {
   let { denominator, error, numerator } = fractionObject;
