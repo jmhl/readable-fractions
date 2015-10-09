@@ -52,13 +52,15 @@ console.log(result);
 // '11/5'
 ```
 
- 
+
 #### <a name="f2">fractionToDecimal
 
 Converts a fraction to a decimal. Unlike toReadableFraction, this is precise.
 
 * @param {String} fraction - The fraction (as a string) to convert.
 * @returns {Number} The converted fraction in decimal notation.
+
+Usage:
 
 ```
 let fraction = '1/4';
@@ -81,7 +83,8 @@ Converts a decimal to a human readable fraction with a maximum denominator of 10
  * @param {Number} decimal - The decimal number to convert.
  * @param {Boolean} shouldFormat (optional) - If true then the function will return a string instead of the fraction object.
  * @returns {Object|String} A fraction object with keys: denominator, error, numerator; OR a formatted fraction string (This will always return a result with a proper fraction so if the decimal is greater than 1 then the resultwill never be improper (e.g. 12/5). To retrieve an improper fraction, call formatReadableFraction on the result of toReadableFraction.
- 
+
+Usage:
 
 ```
 let decimal = 0.333333;

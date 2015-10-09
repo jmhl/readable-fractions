@@ -3,7 +3,7 @@ import {
   formatReadableFraction,
   fractionToDecimal,
   toReadableFraction
-} from '../index.js';
+} from '../src/index.js';
 
 const DECIMALS_AND_FRACTIONS = [
   { decimal: 0.125, fraction: '1/8' },
