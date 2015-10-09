@@ -1,7 +1,7 @@
 {
   "name": "HumanReadableFractions",
   "version": "0.0.1",
-  "description": "",
+  "description": "Converts decimals to human readable fractions, and fractions to decimals.",
   "main": "bundle.js",
   "scripts": {
     "test": "mocha"
