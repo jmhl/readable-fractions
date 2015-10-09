@@ -13,9 +13,9 @@
 export default function formatReadableFraction(fractionObject, isImproper=false) {
   let { denominator, error, numerator } = fractionObject;
 
-  // When the numerator is 0, return '0' instead of '0/1'.
+  // When the numerator is 0, return nothing instead of '0/denominator'.
   if (numerator === 0) {
-    return '0';
+    return;
   }
 
   // If the fraction is improper or the numerator is less than the denominator
