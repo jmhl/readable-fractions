@@ -1,5 +1,5 @@
 {
-  "name": "readable-functions",
+  "name": "readable-fractions",
   "version": "0.0.1",
   "description": "Converts decimals to human readable fractions, and fractions to decimals.",
   "main": "bundle.js",
