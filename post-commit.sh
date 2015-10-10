@@ -1,13 +1,18 @@
-echo 'Running pre-commit script...'
-echo 'Running tests...'
+echo Running post-commit script...
+echo Running tests...
 npm test
 if [ $? -eq 0 ]; then
-  echo OK
+  echo Tests complete.
+  echo Building...
+  npm run build
+  if [ $? -eq 0 ]; then
+    echo Build complete.
+  else
+    echo Build failed.
+    exit 1
+  fi
 else
-  echo FAIL
+  echo Tests failed, build cancelled.
+  exit 1
 fi
-echo 'Tests complete.'
-echo 'Building...'
-npm run build
-echo 'Build complete.'
-echo 'Pre-commit script done.'
+echo Post-commit script done.
