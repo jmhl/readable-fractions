@@ -23,6 +23,8 @@ const FRACTIONS_AND_DECIMALS = [
   { decimal: 0.6666666666666666, fraction: '2/3' },
   { decimal: 0.2, fraction: '1/5' },
   { decimal: 2.2, fraction: '2 1/5' },
+  { decimal: 2, fraction: '2' },
+  { decimal: 0, fraction: '' },
 ];
 
 describe('formatReadableFraction', () => {
