@@ -13,7 +13,9 @@ export default function fractionToDecimal(fraction) {
 
   // Split will result in [Number, '/', Number] if fraction is less than one,
   // and result in [Number, ' ', Number, '/', Number] if greater than one.
-  if (eachChar.length === 3) {
+  if (eachChar.length === 1) {
+    return +eachChar[0];
+  } else if (eachChar.length === 3) {
     let [numerator, slash, denominator] = eachChar;
 
     return +numerator / +denominator;

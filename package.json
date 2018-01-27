@@ -1,22 +1,26 @@
 {
   "name": "readable-fractions",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Converts decimals to human readable fractions, and fractions to decimals.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/jmhl/readable-fractions"
   },
   "scripts": {
-    "test": "mocha",
-    "build": "babel src --out-dir lib"
+    "test": "mocha --compilers js:@babel/register",
+    "build": "rollup -c"
   },
   "author": "James Haley",
   "license": "MIT",
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-core": "^5.8.25",
+    "@babel/core": "^7.0.0-beta.38",
+    "@babel/preset-env": "^7.0.0-beta.38",
+    "@babel/register": "^7.0.0-beta.38",
     "chai": "^3.3.0",
-    "mocha": "^2.3.3"
+    "mocha": "^2.3.3",
+    "rollup": "^0.55.1",
+    "rollup-plugin-babel": "^4.0.0-beta.0",
+    "rollup-plugin-uglify": "^3.0.0"
   }
 }

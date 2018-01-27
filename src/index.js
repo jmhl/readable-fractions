@@ -11,7 +11,7 @@ import formatReadableFraction from './formatReadableFraction.js';
 import fractionToDecimal from './fractionToDecimal.js';
 import toReadableFraction from './toReadableFraction.js';
 
-export default {
+export {
   formatReadableFraction,
   fractionToDecimal,
   toReadableFraction,
