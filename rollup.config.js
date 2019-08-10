@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import uglify from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
   input: 'src/index.js',
@@ -8,9 +8,7 @@ export default {
     format: 'cjs',
   },
   plugins: [
-    babel({
-      exclude: 'node_modules/**',
-    }),
-    uglify(),
+    babel({ exclude: 'node_modules/**' }),
+    terser(),
   ],
 };

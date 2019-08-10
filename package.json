@@ -8,19 +8,19 @@
     "url": "git://github.com/jmhl/readable-fractions"
   },
   "scripts": {
-    "test": "mocha --compilers js:@babel/register",
+    "test": "mocha --require esm",
     "build": "rollup -c"
   },
   "author": "James Haley",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.38",
-    "@babel/preset-env": "^7.0.0-beta.38",
-    "@babel/register": "^7.0.0-beta.38",
-    "chai": "^3.3.0",
-    "mocha": "^2.3.3",
-    "rollup": "^0.55.1",
-    "rollup-plugin-babel": "^4.0.0-beta.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
+    "mocha": "^6.2.0",
+    "rollup": "^1.19.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.1"
   }
 }
